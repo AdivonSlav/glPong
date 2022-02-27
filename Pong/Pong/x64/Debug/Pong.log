@@ -1,0 +1,4 @@
+﻿  Window.cpp
+D:\Documents\Visual Studio 2022\Projects\Pong\Pong\src\graphics\Window.cpp(90,69): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Documents\Visual Studio 2022\Projects\Pong\Pong\src\graphics\Window.cpp(90,62): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Pong.vcxproj -> D:\Documents\Visual Studio 2022\Projects\Pong\x64\Debug\Pong.exe
