@@ -34,6 +34,7 @@ namespace PongGraphics
 
 		int GetUniformLocation(const char* name);
 		void SetUniformMat4f(const char* name, const PongMaths::Mat4& matrix);
+		void SetUniformVec4f(const char* name, PongMaths::Vec4& vec);
 	};
 }
 

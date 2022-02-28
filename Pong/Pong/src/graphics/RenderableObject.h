@@ -15,6 +15,7 @@ namespace PongGraphics
 		PongMaths::Vec3 m_Position;
 		PongMaths::Vec2 m_Size;
 		PongMaths::Vec4 m_Colour;
+		PongMaths::Vec2 m_Velocity;
 
 		VertexArray* m_VAO;
 		IndexBuffer* m_IBO;
@@ -27,7 +28,9 @@ namespace PongGraphics
 		inline const PongMaths::Vec3& GetPosition() const { return m_Position; }
 		inline const PongMaths::Vec2& GetSize() const { return m_Size; }
 		inline const PongMaths::Vec4& GetColour() const { return m_Colour; }
+		inline const PongMaths::Vec2 GetVelocity() const { return m_Velocity; }
 
+		inline  void SetVelocity(const PongMaths::Vec2& velocity) { m_Velocity = velocity; }
 		inline void SetPosition(const PongMaths::Vec3& position) { m_Position = position; }
 
 		inline void TranslateX(float x) { m_Position.x += x; }

@@ -121,5 +121,10 @@ namespace PongGraphics
 	{
 		GLCall(glUniformMatrix4fv(GetUniformLocation(name), 1, GL_FALSE , matrix.mat));
 	}
+
+	void Shader::SetUniformVec4f(const char* name,  PongMaths::Vec4& vec)
+	{
+		GLCall(glUniform4fv(GetUniformLocation(name), 1, reinterpret_cast<GLfloat*>(&vec)));
+	}
 }
 

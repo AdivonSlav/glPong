@@ -19,6 +19,9 @@ namespace PongCore
 		void Init();
 
 		void ProcessInput(double timeDelta);
+		void UpdatePosition(double timeDelta);
+		void PaddleCollision(const PongGraphics::RenderableObject& paddle, double timeDelta);
+		void Reset();
 	public:
 		Pong();
 		~Pong();

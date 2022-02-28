@@ -3,10 +3,10 @@ R"(
 
 out vec4 f_Colour;
 
-in vec4 v_Colour;
+uniform vec4 objectColour;
 
 void main()
 {
-	f_Colour = v_Colour;
+	f_Colour = objectColour;
 }
 )"

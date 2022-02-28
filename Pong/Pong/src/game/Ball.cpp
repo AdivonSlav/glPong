@@ -2,11 +2,16 @@
 
 #include "Ball.h"
 
-PongCore::Ball::Ball(const PongMaths::Vec3 position, unsigned int precision, float radius, PongGraphics::Shader& shader)
+PongCore::Ball::Ball(const PongMaths::Vec3 position, const PongMaths::Vec4 colour, unsigned int precision, float radius, const PongMaths::Vec2& initVelocity, PongGraphics::Shader& shader)
 	: m_Radius(radius)
 {
 	m_Position = position;
+	m_Colour = colour;
+	m_Velocity = initVelocity;
 	m_Shader = &shader;
+
+	shader.Bind();
+	shader.SetUniformVec4f("objectColour", m_Colour);
 
 	// The vertex count is given by the number of triangles (precision) + 1 (because one extra vertex is needed for the origin
 	// point of the circle. Times two for both X and Y components.
