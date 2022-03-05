@@ -9,9 +9,8 @@ workspace "Pong"
 
 project "Pong"
     location "Pong"
-    kind "ConsoleApp"
     language "C++"
-    cppdialect "C++17"
+    cppdialect "C++20"
     targetdir ("bin/%{cfg.buildcfg}-%{cfg.architecture}")
     objdir ("bin/intermediates/%{cfg.buildcfg}-%{cfg.architecture}")
 
@@ -35,7 +34,15 @@ project "Pong"
     {
         "opengl32.lib",
         "glew32s.lib",
-        "glfw3.lib"
+        "glfw3.lib",
+        "freetype.lib"
+    }
+
+    postbuildcommands
+    {
+        "{COPY} %{wks.location}dependencies/lib/freetype.dll %{cfg.targetdir}",  -- Copies the freetype DLL to the build directory
+        "{MKDIR} %{cfg.targetdir}/fonts",                                        -- Makes fonts folder
+        "{COPYDIR} %{prj.location}fonts %{cfg.targetdir}/fonts"                  -- Copies fonts to fonts folder
     }
 
     filter "system:windows"
@@ -44,7 +51,11 @@ project "Pong"
     filter "configurations:Debug"
         defines { "DEBUG", "GLEW_STATIC" }
         symbols "On"
+        kind "ConsoleApp"
+        entrypoint "mainCRTStartup"
     
     filter "configurations:Release"
         defines { "NDEBUG", "GLEW_STATIC" }
         optimize "On"
+        kind "WindowedApp"
+        entrypoint "mainCRTStartup"
