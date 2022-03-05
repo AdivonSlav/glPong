@@ -102,7 +102,7 @@ namespace PongGraphics
 	void Window::Clear(const PongMaths::Vec4& clearColor)
 	{
 		glClearColor(clearColor.x, clearColor.y, clearColor.z, clearColor.w);
-		glClear(GL_COLOR_BUFFER_BIT);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	}
 
 	void Window::Update()
@@ -116,6 +116,13 @@ namespace PongGraphics
 		if (key >= GLFW_KEY_LAST)
 			return false;
 		return m_Keys[key];
+	}
+
+	bool Window::IsKeyReleased(unsigned key) const
+	{
+		if (key >= GLFW_KEY_LAST)
+			return false;
+		return !m_Keys[key];
 	}
 }
 

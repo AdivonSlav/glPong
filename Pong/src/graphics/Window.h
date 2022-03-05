@@ -30,10 +30,6 @@ namespace PongGraphics
 		static void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
 		static void WindowSizeCallback(GLFWwindow* window, int width, int height);
 	public:
-		__declspec(property(get = GetWidth, put = SetWidth)) int Width;
-		__declspec(property(get = GetHeight, put = SetHeight)) int Height;
-
-
 		Window(const char* title, int width, int height);
 		~Window();
 
@@ -51,6 +47,7 @@ namespace PongGraphics
 		void Update();
 
 		bool IsKeyPressed(unsigned int key) const;
+		bool IsKeyReleased(unsigned int key) const;
 
 		inline GLFWwindow*& GetWindow() { return m_Window; }
 		inline std::string& GetTitle() { return m_Title; }

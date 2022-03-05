@@ -1,12 +1,12 @@
 R"(
 #version 440 core
 
-out vec4 f_Colour;
+in vec4 v_Colour;
 
-uniform vec4 objectColour;
+out vec4 f_Colour;
 
 void main()
 {
-	f_Colour = objectColour;
+	f_Colour = v_Colour;
 }
 )"

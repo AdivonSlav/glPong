@@ -1,3 +1,4 @@
+
 #pragma once
 
 #include <vector>
@@ -30,6 +31,12 @@ namespace PongGraphics
 			
 		}
 
+		/**
+		 * \brief Stores information about the count, data type and stride of the data to be buffered to the VAO
+		 * \tparam T The type of data to be added to the buffer layout
+		 * \param count Number of components to be added to the buffer layout
+		 * \param normalized Whether to normalize or not
+		 */
 		template<>
 		void Add<float>(GLboolean normalized, VertexBuffer* buffer)
 		{
@@ -37,7 +44,7 @@ namespace PongGraphics
 			m_Stride += sizeof(float) * buffer->GetCount();
 		}
 
-		std::vector<VertexBufferElement> GetElements() const { return m_Elements; }
+		std::vector<VertexBufferElement>& GetElements() { return m_Elements; }
 		unsigned int GetStride() const { return m_Stride; }
 	};
 }

@@ -32,6 +32,14 @@ namespace PongGraphics
 		Unbind();
 	}
 
+	void VertexArray::CleanBuffers()
+	{
+		for (auto& element : m_Layout.GetElements())
+		{
+			element.buffer->Invalidate();
+		}
+	}
+
 	void VertexArray::Bind() const
 	{
 		GLCall(glBindVertexArray(m_ArrayID));

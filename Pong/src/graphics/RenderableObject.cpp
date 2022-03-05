@@ -13,14 +13,19 @@ namespace PongGraphics
 	{
 		float vertices[]
 		{
-			0.0f, 0.0f, 0.0f,
-			0.0f, size.y, 0.0f,
-			size.x, size.y, 0.0f,
-			size.x, 0.0f, 0.0f
+			0.0f, 0.0f, position.z,
+			0.0f, size.y, position.z,
+			size.x, size.y, position.z,
+			size.x, 0.0f, 0, position.z
 		};
 
-		shader.Bind();
-		shader.SetUniformVec4f("objectColour", m_Colour);
+		float colours[]
+		{
+			colour.x, colour.y , colour.z, colour.w,
+			colour.x, colour.y , colour.z, colour.w,
+			colour.x, colour.y , colour.z, colour.w,
+			colour.x, colour.y , colour.z, colour.w
+		};
 
 		unsigned int indices[]
 		{
@@ -31,7 +36,8 @@ namespace PongGraphics
 		m_VAO = new VertexArray();
 		m_IBO = new IndexBuffer(6, indices);
 
-		m_VAO->GetLayout().Add<float>(GL_FALSE, new VertexBuffer(4 * 3, 3, vertices));
+		m_VAO->GetLayout().Add<float>(GL_FALSE, new VertexBuffer(4 * 3, 3, vertices,GL_STATIC_DRAW));
+		m_VAO->GetLayout().Add<float>(GL_FALSE, new VertexBuffer(4 * 4, 4, colours, GL_STATIC_DRAW));
 		m_VAO->AddBuffers();
 	}
 

@@ -7,10 +7,10 @@
 
 namespace PongGraphics
 {
-	Shader::Shader()
+	Shader::Shader(const std::string& vs_filepath, const std::string& fs_filepath)
 		: m_ProgramID(0)
 	{
-		m_ProgramID = CreateShaderProgram();
+		m_ProgramID = CreateShaderProgram(vs_filepath, fs_filepath);
 	}
 
 	Shader::~Shader()
@@ -50,19 +50,11 @@ namespace PongGraphics
 		return id;
 	}
 
-	unsigned Shader::CreateShaderProgram()
+	unsigned Shader::CreateShaderProgram(const std::string& vs_source, const std::string& fs_source)
 	{
-		const std::string vertexSource =
-			#include "../shaders/vertex.shader"
-		;
-
-		const std::string fragmentSource =
-			#include "../shaders/fragment.shader"
-		;
-
 		unsigned int program = glCreateProgram();
-		unsigned int vs = CompileShader(GL_VERTEX_SHADER, vertexSource);
-		unsigned int fs = CompileShader(GL_FRAGMENT_SHADER, fragmentSource);
+		unsigned int vs = CompileShader(GL_VERTEX_SHADER, vs_source);
+		unsigned int fs = CompileShader(GL_FRAGMENT_SHADER, fs_source);
 
 		if (vs == 0 || fs == 0)
 		{
@@ -125,6 +117,11 @@ namespace PongGraphics
 	void Shader::SetUniformVec4f(const char* name,  PongMaths::Vec4& vec)
 	{
 		GLCall(glUniform4fv(GetUniformLocation(name), 1, reinterpret_cast<GLfloat*>(&vec)));
+	}
+
+	void Shader::SetUniformVec3f(const char* name, PongMaths::Vec3& vec)
+	{
+		GLCall(glUniform3fv(GetUniformLocation(name), 1, reinterpret_cast<GLfloat*>(&vec)));
 	}
 }
 

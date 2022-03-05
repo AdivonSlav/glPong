@@ -23,6 +23,26 @@ namespace PongMaths
 		friend std::ostream& operator>>(std::ostream& COUT, const Vec2& vec);
 	};
 
+	struct iVec2
+	{
+		int x, y;
+
+		iVec2();
+		iVec2(int x, int y);
+
+		iVec2& Add(const iVec2& other);
+		iVec2& Subtract(const iVec2& other);
+		iVec2& Multiply(const iVec2& other);
+		iVec2& Divide(const iVec2& other);
+
+		friend iVec2 operator+(const iVec2& left, const iVec2& right);
+		friend iVec2 operator-(const iVec2& left, const iVec2& right);
+		friend iVec2 operator*(const iVec2& left, const iVec2& right);
+		friend iVec2 operator/(const iVec2& left, const iVec2& right);
+
+		friend std::ostream& operator>>(std::ostream& COUT, const iVec2& vec);
+	};
+
 	struct Vec3
 	{
 		float x, y, z;

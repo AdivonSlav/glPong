@@ -45,6 +45,8 @@ namespace PongMaths
 		return *this;
 	}
 
+
+
 	Vec2 operator+(const Vec2& left, const Vec2& right)
 	{
 		Vec2 result;
@@ -91,11 +93,102 @@ namespace PongMaths
 		return COUT;
 	}
 
+	//
+
+	iVec2::iVec2()
+		: x(0), y(0)
+	{
+	}
+
+	iVec2::iVec2(int x, int y)
+		: x(x), y(y)
+	{
+	}
+
+	iVec2& iVec2::Add(const iVec2& other)
+	{
+		this->x += other.x;
+		this->y += other.y;
+
+		return *this;
+	}
+
+	iVec2& iVec2::Subtract(const iVec2& other)
+	{
+		this->x -= other.x;
+		this->y -= other.y;
+
+		return *this;
+	}
+
+	iVec2& iVec2::Multiply(const iVec2& other)
+	{
+		this->x *= other.x;
+		this->y *= other.y;
+
+		return *this;
+	}
+
+	iVec2& iVec2::Divide(const iVec2& other)
+	{
+		this->x /= other.x;
+		this->y /= other.y;
+
+		return *this;
+	}
+
+	iVec2 operator+(const iVec2& left, const iVec2& right)
+	{
+		iVec2 result;
+
+		result.x = left.x + right.x;
+		result.y = left.y + right.y;
+
+		return result;
+	}
+
+	iVec2 operator-(const iVec2& left, const iVec2& right)
+	{
+		iVec2 result;
+
+		result.x = left.x - right.x;
+		result.y = left.y - right.y;
+
+		return result;
+	}
+
+	iVec2 operator*(const iVec2& left, const iVec2& right)
+	{
+		iVec2 result;
+
+		result.x = left.x * right.x;
+		result.y = left.y * right.y;
+
+		return result;
+	}
+
+	iVec2 operator/(const iVec2& left, const iVec2& right)
+	{
+		iVec2 result;
+
+		result.x = left.x / right.x;
+		result.y = left.y / right.y;
+
+		return result;
+	}
+
+	std::ostream& operator>>(std::ostream& COUT, const iVec2& vec)
+	{
+		COUT << "(x: " << vec.x << ") (y: " << vec.y << std::endl;
+		return COUT;
+	}
+
 	// // // // // // // // // // //
 
 	Vec3::Vec3()
 		: x(0), y(0), z(0)
 	{
+
 	}
 
 	Vec3::Vec3(float x, float y, float z)

@@ -10,10 +10,11 @@ namespace PongGraphics
 	{
 	private:
 		std::deque<std::reference_wrapper<const RenderableObject>> m_RenderQueue;
+		std::deque<std::string> m_TextRenderQueue;
 	public:
 		/**
 		 * \brief Push backs a new renderable object to be deque
-		 * \param renderable Object to be rendered
+		 * \param renderable object to be rendered
 		 */
 		void Queue(const RenderableObject& renderable);
 

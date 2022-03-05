@@ -14,10 +14,13 @@ namespace PongGraphics
 
 		/**
 		 * \brief calls glVertexAttribPointer in order to specify the format and location of the buffered data according to the provided buffer layout
-		 * \param vbo Pointer to the VBO
-		 * \param layout The layout that will be used to buffer the data
 		 */
 		void AddBuffers();
+
+		/**
+		 * \brief Invalides the memory of each buffer associated with the vertex array object
+		 */
+		void CleanBuffers();
 
 		void Bind() const;
 		void Unbind() const;

@@ -3,10 +3,15 @@
 #include <iostream>
 #include <GL/glew.h>
 
+#ifndef _DEBUG
+#define ASSERT(x) 
+#define GLCall(x) x;
+#else
 #define ASSERT(x) if (!(x)) __debugbreak();
 #define GLCall(x) GLClearError();\
 	x;\
 	ASSERT(GLLog(#x, __FILE__, __LINE__))
+#endif
 
 inline void GLClearError()
 {
