@@ -11,7 +11,7 @@ For simple text rendering functionality, I ended up using the Freetype library
 - Space - Pauses game
 
 ## Build instructions
-Simply run the file `genproj.bat` and it will generate the necessary VS2022 project files. After that, simply open the solution with Visual Studio. If generating for an earlier version of Visual Studio, simply edit the file and replace 'vs2022' with your version.
+Simply run the file `genproj.bat` and it will generate the necessary VS2022 project files. After that, open the solution with Visual Studio. If generating for an earlier version of Visual Studio, edit the file and replace 'vs2022' with your version.
 
 [Pre-compiled binaries](https://github.com/AdivonSlav/glPong/releases)
 
